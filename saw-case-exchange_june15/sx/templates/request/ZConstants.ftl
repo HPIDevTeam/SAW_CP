@@ -1,0 +1,1 @@
+<#assign REQUEST_CUSTOM_FIELD = "AssignedToGroup.Name,RequestedForPerson.Location,RequestedForPerson.FirstName,RequestedForPerson.LastName,RequestedForPerson.Email,RequestedForPerson.HomePhoneNumber,RequestedForPerson.Id,Priority"/>

@@ -1,0 +1,22 @@
+{
+    "GSEMKeys": {
+        "GSEMAgentKey": "dcmXDpmXDpJZvHnTr1ER",
+        "GSEMPlatformType": "TRAINING-SSL",
+        "GSEMRemoteAgentName": "Corning_DEV_P"
+    },
+    "locdefault": {
+        "locID": "17000"
+    },
+    "compdefault": {
+        "compID": "11634"
+    },
+    "devicedefault": {
+        "devID": "14126"
+    },
+    "ccode": {
+        "ccodedefault": "CompletionCodeFulfilled"
+    },
+    "sol": {
+        "soldefault": "Not filled in GSEM"
+    }
+}

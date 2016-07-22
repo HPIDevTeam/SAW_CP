@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Implementation-Title: content-saw-case-exchange
+Implementation-Version: 2.10-CX-V2
+Archiver-Version: Plexus Archiver
+Built-By: jenkins
+Specification-Vendor: Hewlett-Packard Development Company, L.P.
+Implementation-Vendor-Id: com.hp.ccue.serviceExchange
+Specification-Title: content-saw-case-exchange
+Created-By: Apache Maven 3.0.5
+Build-Jdk: 1.8.0_60
+Specification-Version: 2.10-CX-V2
+Implementation-Vendor: Hewlett-Packard Development Company, L.P.
+

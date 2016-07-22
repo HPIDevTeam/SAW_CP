@@ -1,0 +1,784 @@
+{
+    "convertIncidentToCanonicalModel": [
+        {
+            "label": "Convert incident to canonical model",
+            "resultTemplate": "incident/convertIncidentToCanonicalModelResult.ftl"
+        }
+    ],
+
+    "getChangedIncidents": [
+        {
+            "label": "Authenticate",
+            "requestUrlTemplate": "authenticateUrl.ftl",
+            "responseTemplate": "authenticateResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Get changed incidents",
+            "requestUrlTemplate": "incident/getIncidentsUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "incident/getIncidentsResponse.ftl",
+            "method": "GET"
+        }
+    ],
+
+    "cloneIncident": [
+        {
+            "label": "Authenticate",
+            "requestUrlTemplate": "authenticateUrl.ftl",
+            "responseTemplate": "authenticateResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Prepare comments for save",
+            "resultTemplate": "incident/mergeSawCommentsWithIncoming.ftl"
+        },
+        {
+            "label": "Create new incident",
+            "requestUrlTemplate": "incident/createIncidentUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "requestTemplate": "incident/createIncidentRequest.ftl",
+            "responseTemplate": "incident/createIncidentResponse.ftl",
+            "method": "POST"
+        },
+        {
+            "label": "Retrieve incident status after clone",
+            "requestUrlTemplate": "incident/retrieveIncidentStatusAfterCloneUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "incident/retrieveIncidentStatusAfterCloneResponse.ftl",
+            "method": "GET"
+        }
+    ],
+
+    "retrieveIncident": [
+        {
+            "label": "Authenticate",
+            "requestUrlTemplate": "authenticateUrl.ftl",
+            "responseTemplate": "authenticateResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Retrieve SAW incident details",
+            "requestUrlTemplate": "incident/retrieveIncidentUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "incident/retrieveIncidentResponse.ftl",
+            "method": "GET"
+        },
+		 //Customization Starts - Retrieving Location Entity Datas
+		{
+			"label":"Retrieve Location Values",
+			"requestUrlTemplate": "incident/retrievelocvalUrl.ftl",
+			"requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+			"responseTemplate": "incident/retrievelocvalResponse.ftl",
+            "method": "GET"
+	   },
+        {
+            "label": "Get all SAW incident comments",
+            "requestUrlTemplate": "incident/retrieveIncidentCommentsUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "incident/retrieveIncidentCommentsResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Retrieve SAW external reference",
+            "requestUrlTemplate": "incident/retrieveExtRefUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "incident/retrieveExtRefResponse.ftl",
+            "method": "GET"
+        }
+    ],
+
+    "updateLinkedIncidentInfo": [
+        {
+            "label": "Authenticate",
+            "requestUrlTemplate": "authenticateUrl.ftl",
+            "responseTemplate": "authenticateResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Retrieve SAW old external reference",
+            "requestUrlTemplate": "incident/retrieveOldExtRefUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "incident/retrieveOldExtRefResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Update linked incident info",
+            "requestUrlTemplate": "incident/updateIncidentUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "requestTemplate": "incident/updateLinkedIncidentInfoRequest.ftl",
+            "method": "POST"
+        }
+    ],
+
+    "deleteLinkedIncidentInfo": [
+        {
+            "label": "Authenticate",
+            "requestUrlTemplate": "authenticateUrl.ftl",
+            "responseTemplate": "authenticateResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Delete linked incident info",
+            "requestUrlTemplate": "incident/updateIncidentUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "requestTemplate": "incident/deleteLinkedIncidentInfoRequest.ftl",
+            "method": "POST"
+        }
+    ],
+
+    "resolveIncident": [
+        {
+            "label": "Authenticate",
+            "requestUrlTemplate": "authenticateUrl.ftl",
+            "responseTemplate": "authenticateResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Get all SAW comments and merge them to incoming message",
+            "requestUrlTemplate": "incident/retrieveLinkedIncidentCommentsUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "incident/mergeSawCommentsWithIncoming.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Retrieve SAW old incident details",
+            "requestUrlTemplate": "incident/retrieveOldLinkedIncidentUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "incident/retrieveOldIncidentResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Prepare SAW new incident details",
+            "resultTemplate": "incident/updateLinkedIncidentRequest.ftl"
+        },
+        {
+            "label": "Stops all subsequent steps and operation if no change detected",
+            "resultTemplate": "incident/checkIfChangeDetected.ftl"
+        },
+        {
+            "label": "Update linked incident",
+            "requestUrlTemplate": "incident/updateIncidentUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "requestTemplate": "incident/saveChangesRequest.ftl",
+            "method": "POST"
+        },
+        {
+            "label": "Update linked entity status in message",
+            "resultTemplate": "incident/updateLinkedStatusToComplete.ftl"
+        }
+    ],
+
+    "cancelIncident": [
+        {
+            "label": "Authenticate",
+            "requestUrlTemplate": "authenticateUrl.ftl",
+            "responseTemplate": "authenticateResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Get all SAW comments and merge them to incoming message",
+            "requestUrlTemplate": "incident/retrieveLinkedIncidentCommentsUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "incident/mergeSawCommentsWithIncoming.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Retrieve SAW old incident details",
+            "requestUrlTemplate": "incident/retrieveOldLinkedIncidentUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "incident/retrieveOldIncidentResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Prepare SAW new incident details",
+            "resultTemplate": "incident/updateLinkedIncidentRequest.ftl"
+        },
+        {
+            "label": "Stops all subsequent steps and operation if no change detected",
+            "resultTemplate": "incident/checkIfChangeDetected.ftl"
+        },
+        {
+            "label": "Update linked incident",
+            "requestUrlTemplate": "incident/updateIncidentUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "requestTemplate": "incident/saveChangesRequest.ftl",
+            "method": "POST"
+        },
+        {
+            "label": "Update linked entity status in message",
+            "resultTemplate": "incident/updateLinkedStatusToComplete.ftl"
+        }
+    ],
+
+    "reopenIncident": [
+        {
+            "label": "Authenticate",
+            "requestUrlTemplate": "authenticateUrl.ftl",
+            "responseTemplate": "authenticateResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Get all SAW comments and merge them to incoming message",
+            "requestUrlTemplate": "incident/retrieveLinkedIncidentCommentsUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "incident/mergeSawCommentsWithIncoming.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Retrieve SAW old incident details",
+            "requestUrlTemplate": "incident/retrieveOldLinkedIncidentUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "incident/retrieveOldIncidentResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Prepare SAW new incident details",
+            "resultTemplate": "incident/reopenLinkedIncidentRequest.ftl"
+        },
+        {
+            "label": "Stops all subsequent steps and operation if no change detected",
+            "resultTemplate": "incident/checkIfChangeDetected.ftl"
+        },
+        {
+            "label": "Update linked incident",
+            "requestUrlTemplate": "incident/updateIncidentUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "requestTemplate": "incident/saveChangesRequest.ftl",
+            "method": "POST"
+        },
+        {
+            "label": "Update linked entity status in message",
+            "resultTemplate": "incident/updateLinkedStatusToReady.ftl"
+        }
+    ],
+
+    "updateLinkedIncident": [
+        {
+            "label": "Authenticate",
+            "requestUrlTemplate": "authenticateUrl.ftl",
+            "responseTemplate": "authenticateResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Get all SAW comments and merge them to incoming message",
+            "requestUrlTemplate": "incident/retrieveLinkedIncidentCommentsUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "incident/mergeSawCommentsWithIncoming.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Retrieve SAW old incident details",
+            "requestUrlTemplate": "incident/retrieveOldLinkedIncidentUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "incident/retrieveOldIncidentResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Prepare SAW new incident details",
+            "resultTemplate": "incident/updateLinkedIncidentRequest.ftl"
+        },
+        {
+            "label": "Update linked incident",
+            "requestUrlTemplate": "incident/updateIncidentUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "requestTemplate": "incident/saveChangesRequest.ftl",
+            "method": "POST"
+        }
+    ],
+
+    "closeIncident": [
+        {
+            "label": "Authenticate",
+            "requestUrlTemplate": "authenticateUrl.ftl",
+            "responseTemplate": "authenticateResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Get all SAW comments and merge them to incoming message",
+            "requestUrlTemplate": "incident/retrieveLinkedIncidentCommentsUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "incident/mergeSawCommentsWithIncoming.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Retrieve SAW old incident details",
+            "requestUrlTemplate": "incident/retrieveOldLinkedIncidentUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "incident/retrieveOldIncidentResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Prepare SAW new incident details",
+            "resultTemplate": "incident/closeIncidentRequest.ftl"
+        },
+        {
+            "label": "Update linked incident",
+            "requestUrlTemplate": "incident/updateIncidentUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "requestTemplate": "incident/saveChangesRequest.ftl",
+            "method": "POST"
+        },
+        {
+            "label": "Update linked entity status in message",
+            "resultTemplate": "incident/updateLinkedStatusToComplete.ftl"
+        }
+    ],
+
+    "rejectIncident": [
+        {
+            "label": "Authenticate",
+            "requestUrlTemplate": "authenticateUrl.ftl",
+            "responseTemplate": "authenticateResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Get all SAW comments and merge them to incoming message",
+            "requestUrlTemplate": "incident/retrieveLinkedIncidentCommentsUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "incident/mergeSawCommentsWithIncoming.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Retrieve SAW old incident details",
+            "requestUrlTemplate": "incident/retrieveOldLinkedIncidentUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "incident/retrieveOldIncidentResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Prepare SAW new incident details",
+            "resultTemplate": "incident/rejectIncidentRequest.ftl"
+        },
+        {
+            "label": "Update linked incident",
+            "requestUrlTemplate": "incident/updateIncidentUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "requestTemplate": "incident/saveChangesRequest.ftl",
+            "method": "POST"
+        }
+    ],
+
+    "downloadAttachment": [
+        {
+            "label": "Authenticate",
+            "requestUrlTemplate": "authenticateUrl.ftl",
+            "responseTemplate": "authenticateResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Download attachment",
+            "requestUrlTemplate": "attachment/downloadAttachmentUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "keepStringResponseAsStream": true,
+            "method": "GET"
+        }
+    ],
+
+    "uploadAttachment": [
+        {
+            "label": "Authenticate",
+            "requestUrlTemplate": "authenticateUrl.ftl",
+            "responseTemplate": "authenticateResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Retrieve existing attachments",
+            "requestUrlTemplate": "attachment/retrieveAttachmentsUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "attachment/retrieveAttachmentResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Upload attachment",
+            "requestUrlTemplate": "attachment/uploadAttachmentUrl.ftl",
+            "requestHeaderTemplate": "attachment/uploadAttachmentHeaders.ftl",
+            "requestContentSelector": "$.result",
+            "responseTemplate": "attachment/uploadAttachmentResponse.ftl",
+            "method": "POST"
+        },
+        {
+            "label": "Link attachment to Incident",
+            "header-Content-Type": "application/json",
+            "requestUrlTemplate": "attachment/linkAttachmentUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "requestTemplate": "attachment/linkAttachmentRequest.ftl",
+            "method": "POST"
+        }
+    ],
+    "convertRequestToCanonicalModel": [
+        {
+            "label": "Convert request to canonical model",
+            "resultTemplate": "request/convertRequestToCanonicalModelResult.ftl"
+        }
+    ],
+    "getChangedRequestsCX": [
+        {
+            "label": "Authenticate",
+            "requestUrlTemplate": "authenticateUrl.ftl",
+            "responseTemplate": "authenticateResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Get changed requests",
+            "requestUrlTemplate": "request/getRequestUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "request/getRequestResponse.ftl",
+            "method": "GET"
+        }
+    ],
+    "cloneRequest": [
+        {
+            "label": "Authenticate",
+            "requestUrlTemplate": "authenticateUrl.ftl",
+            "responseTemplate": "authenticateResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Prepare comments for save",
+            "resultTemplate": "request/mergeSawCommentsWithIncomingRequest.ftl"
+        },
+        {
+            "label": "Create new request",
+            "requestUrlTemplate": "request/createRequestUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "requestTemplate": "request/createRequestRequest.ftl",
+            "responseTemplate": "request/createRequestResponse.ftl",
+            "method": "POST"
+        },
+        {
+            "label": "Retrieve request status after clone",
+            "requestUrlTemplate": "request/retrieveRequestStatusAfterCloneUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "request/retrieveRequestStatusAfterCloneResponse.ftl",
+            "method": "GET"
+        }
+    ],
+    "updateLinkedRequestInfo": [
+        {
+            "label": "Authenticate",
+            "requestUrlTemplate": "authenticateUrl.ftl",
+            "responseTemplate": "authenticateResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Retrieve SAW old external reference",
+            "requestUrlTemplate": "request/retrieveOldExtRefUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "request/retrieveOldExtRefResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Update linked incident info",
+            "requestUrlTemplate": "request/updateRequestUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "requestTemplate": "request/updateLinkedRequestInfoRequest.ftl",
+            "method": "POST"
+        }
+    ],
+    "retrieveRequest": [
+        {
+            "label": "Authenticate",
+            "requestUrlTemplate": "authenticateUrl.ftl",
+            "responseTemplate": "authenticateResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Retrieve SAW request details",
+            "requestUrlTemplate": "request/retrieveRequestUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "request/retrieveRequestResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Retrieve Location Values",
+            "requestUrlTemplate": "request/retrievelocvalUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "request/retrievelocvalResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Retrieve Company Values",
+            "requestUrlTemplate": "request/retrieveCompvalUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "request/retrieveCompvalResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Retrieve Device Values",
+            "requestUrlTemplate": "request/retrieveDevicevalUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "request/retrieveDevicevalResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Get all SAW request comments",
+            "requestUrlTemplate": "request/retrieveRequestCommentsUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "request/retrieveRequestCommentsResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Retrieve SAW external reference",
+            "requestUrlTemplate": "request/retrieveExtRefUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "request/retrieveExtRefResponse.ftl",
+            "method": "GET"
+        }
+    ],
+    "deleteLinkedRequestInfo": [
+        {
+            "label": "Authenticate",
+            "requestUrlTemplate": "authenticateUrl.ftl",
+            "responseTemplate": "authenticateResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Delete linked request info",
+            "requestUrlTemplate": "request/updateRequestUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "requestTemplate": "request/deleteLinkedRequestInfoRequest.ftl",
+            "method": "POST"
+        }
+    ],
+    "resolveRequest": [
+        {
+            "label": "Authenticate",
+            "requestUrlTemplate": "authenticateUrl.ftl",
+            "responseTemplate": "authenticateResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Get all SAW comments and merge them to incoming message",
+            "requestUrlTemplate": "request/retrieveLinkedRequestCommentsUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "request/mergeSawCommentsWithIncomingRequest.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Retrieve SAW old request details",
+            "requestUrlTemplate": "request/retrieveOldLinkedRequestUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "request/retrieveOldRequestResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Prepare SAW new request details",
+            "resultTemplate": "request/updateLinkedRequestRequest.ftl"
+        },
+        {
+            "label": "Stops all subsequent steps and operation if no change detected",
+            "resultTemplate": "request/checkIfChangeDetectedRequest.ftl"
+        },
+        {
+            "label": "Update linked request",
+            "requestUrlTemplate": "request/updateRequestUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "requestTemplate": "request/saveChangesRequestRequest.ftl",
+            "method": "POST"
+        },
+        {
+            "label": "Update linked entity status in message",
+            "resultTemplate": "request/updateLinkedStatusToCompleteRequest.ftl"
+        },
+	 {
+            "label": "Acknowledge the last GSEM Message to remove it from the GetNextMessage queue",
+            "requestUrlTemplate": "request/acknowledgeMessageUrl.ftl",
+            "requestTemplate": "request/acknowledgeMessageRequest.ftl",
+            "responseTemplate": "request/acknowledgeMessageResponse.ftl",
+            "method": "POST"
+         }
+    ],
+    "cancelRequest": [
+        {
+            "label": "Authenticate",
+            "requestUrlTemplate": "authenticateUrl.ftl",
+            "responseTemplate": "authenticateResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Get all SAW comments and merge them to incoming message",
+            "requestUrlTemplate": "request/retrieveLinkedRequestCommentsUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "request/mergeSawCommentsWithIncomingRequest.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Retrieve SAW old request details",
+            "requestUrlTemplate": "request/retrieveOldLinkedRequestUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "request/retrieveOldRequestResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Prepare SAW new request details",
+            "resultTemplate": "request/updateLinkedRequestRequest.ftl"
+        },
+        {
+            "label": "Stops all subsequent steps and operation if no change detected",
+            "resultTemplate": "request/checkIfChangeDetected.ftl"
+        },
+        {
+            "label": "Update linked request",
+            "requestUrlTemplate": "request/updateRequestUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "requestTemplate": "request/saveChangesRequestRequest.ftl",
+            "method": "POST"
+        },
+        {
+            "label": "Update linked entity status in message",
+            "resultTemplate": "request/updateLinkedStatusToComplete.ftl"
+        }
+    ],
+    "reopenRequest": [
+        {
+            "label": "Authenticate",
+            "requestUrlTemplate": "authenticateUrl.ftl",
+            "responseTemplate": "authenticateResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Get all SAW comments and merge them to incoming message",
+            "requestUrlTemplate": "request/retrieveLinkedRequestCommentsUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "request/mergeSawCommentsWithIncomingRequest.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Retrieve SAW old request details",
+            "requestUrlTemplate": "request/retrieveOldLinkedRequestUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "request/retrieveOldRequestResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Prepare SAW new request details",
+            "resultTemplate": "request/reopenLinkedRequestRequest.ftl"
+        },
+        {
+            "label": "Stops all subsequent steps and operation if no change detected",
+            "resultTemplate": "request/checkIfChangeDetected.ftl"
+        },
+        {
+            "label": "Update linked request",
+            "requestUrlTemplate": "request/updateRequestUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "requestTemplate": "request/saveChangesRequestRequest.ftl",
+            "method": "POST"
+        },
+        {
+            "label": "Update linked entity status in message",
+            "resultTemplate": "request/updateLinkedStatusToReadyRequest.ftl"
+        }
+    ],
+    "updateLinkedRequest": [
+        {
+            "label": "Authenticate",
+            "requestUrlTemplate": "authenticateUrl.ftl",
+            "responseTemplate": "authenticateResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Get all SAW comments and merge them to incoming message",
+            "requestUrlTemplate": "request/retrieveLinkedRequestCommentsUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "request/mergeSawCommentsWithIncomingRequest.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Retrieve SAW old request details",
+            "requestUrlTemplate": "request/retrieveOldLinkedRequestUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "request/retrieveOldRequestResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Prepare SAW new request details",
+            "resultTemplate": "request/updateLinkedRequestRequest.ftl"
+        },
+        {
+            "label": "Update linked request",
+            "requestUrlTemplate": "request/updateRequestUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "requestTemplate": "request/saveChangesRequestRequest.ftl",
+            "method": "POST"
+        },
+	 {
+            "label": "Acknowledge the last GSEM Message to remove it from the GetNextMessage queue",
+            "requestUrlTemplate": "request/acknowledgeMessageUrl.ftl",
+            "requestTemplate": "request/acknowledgeMessageRequest.ftl",
+            "responseTemplate": "request/acknowledgeMessageResponse.ftl",
+            "method": "POST"
+         }
+    ],
+    "closeRequest": [
+        {
+            "label": "Authenticate",
+            "requestUrlTemplate": "authenticateUrl.ftl",
+            "responseTemplate": "authenticateResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Get all SAW comments and merge them to incoming message",
+            "requestUrlTemplate": "request/retrieveLinkedRequestCommentsUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "request/mergeSawCommentsWithIncomingRequest.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Retrieve SAW old request details",
+            "requestUrlTemplate": "request/retrieveOldLinkedRequestUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "request/retrieveOldRequestResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Prepare SAW new request details",
+            "resultTemplate": "request/closeRequestRequest.ftl"
+        },
+        {
+            "label": "Update linked request",
+            "requestUrlTemplate": "request/updateRequestUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "requestTemplate": "request/saveChangesRequestRequest.ftl",
+            "method": "POST"
+        },
+        {
+            "label": "Update linked entity status in message",
+            "resultTemplate": "request/updateLinkedStatusToCompleteRequest.ftl"
+        }
+    ],
+    "rejectRequest": [
+        {
+            "label": "Authenticate",
+            "requestUrlTemplate": "authenticateUrl.ftl",
+            "responseTemplate": "authenticateResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Get all SAW comments and merge them to incoming message",
+            "requestUrlTemplate": "request/retrieveLinkedRequestCommentsUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "request/mergeSawCommentsWithIncomingRequest.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Retrieve SAW old request details",
+            "requestUrlTemplate": "request/retrieveOldLinkedRequestUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "responseTemplate": "request/retrieveOldRequestResponse.ftl",
+            "method": "GET"
+        },
+        {
+            "label": "Prepare SAW new request details",
+            "resultTemplate": "request/rejectRequestRequest.ftl"
+        },
+        {
+            "label": "Update linked request",
+            "requestUrlTemplate": "request/updateRequestUrl.ftl",
+            "requestHeaderTemplate": "commonSawAuthenticationHeaders.ftl",
+            "requestTemplate": "request/saveChangesRequestRequest.ftl",
+            "method": "POST"
+        }
+    ]
+}

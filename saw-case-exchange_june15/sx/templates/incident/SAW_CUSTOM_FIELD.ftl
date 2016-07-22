@@ -1,0 +1,1 @@
+<#assign SAW_CUSTOM_FIELD = "AssignedGroup.Name,RequestedByPerson.Location,RequestedByPerson.FirstName,RequestedByPerson.LastName,RequestedByPerson.Email,RequestedByPerson.HomePhoneNumber"/>

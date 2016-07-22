@@ -1,0 +1,66 @@
+{
+    "events": {
+        "SAW": {
+            "incidentExternalReferenceCreated": {
+                "entityType": "Incident",
+                "entityFilter": "OPERATION=='Create' || OPERATION == 'Assign'",
+                "changeType": [
+                    "update",
+                    "create"
+                ]
+            },
+            "incidentUpdated": {
+                "entityType": "Incident",
+                "entityFilter": "OPERATION=='Update'"
+            },
+            "incidentClosed": {
+                "entityType": "Incident",
+                "entityFilter": "OPERATION=='Close'"
+            },
+            "incidentResolved": {
+                "entityType": "Incident",
+                "entityFilter": "OPERATION=='Resolve'"
+            },
+            "incidentRejected": {
+                "entityType": "Incident",
+                "entityFilter": "OPERATION=='Reject'"
+            },
+            "incidentReopened": {
+                "entityType": "Incident",
+                "entityFilter": "OPERATION=='Reopen'"
+            },
+            "incidentCancelled": {
+                "entityType": "Incident",
+                "entityFilter": "OPERATION=='Cancel'"
+            },
+            "requestExternalReferenceCreated": {
+                "entityType": "Request",
+                "entityFilter": "(OPERATION=='Create' || OPERATION == 'Assign' || OPERATION=='Accept') && (Boolean(RECORD.ExternalProcessReference)==false || RECORD.ExternalProcessReference=='')",
+                "changeType": [
+                    "update",
+                    "create"
+                ]
+            },
+            "requestUpdated": {
+                "entityType": "Request",
+                "entityFilter": "RECORD.ExternalProcessReference != '' && RECORD.PhaseId!='Abandon' && (OPERATION=='Update' || OPERATION == 'Assign' || OPERATION=='Accept') && (RECORD.PhaseId!='Accept' && RECORD.PhaseId!='Close' && RECORD.PhaseId!='Review')"
+            },
+            "requestClosed": {
+                "entityType": "Request",
+                "entityFilter": "(OPERATION=='Close' || OPERATION=='Update')&& (RECORD.PhaseId=='Close')"
+            },
+            "requestResolved": {
+                "entityType": "Request",
+                "entityFilter": "RECORD.PhaseId=='Abandon' || OPERATION=='Cancel'"
+            },
+            "requestRejected": {
+                "entityType": "Request",
+                "entityFilter": "OPERATION=='Reject'"
+            },
+            "requestReopened": {
+                "entityType": "Request",
+                "entityFilter": "OPERATION=='Reopen'"
+            }
+        }
+    }
+}

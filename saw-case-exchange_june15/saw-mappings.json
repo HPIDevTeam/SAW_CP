@@ -1,0 +1,114 @@
+{
+    "entityType": {
+        "Incident": "Incident",
+	"Request" : "Request"
+    },
+    "Incident": {
+        "Status": {
+            // todo: review status mappings
+            "Open": "Ready",
+            "WorkInProgress": "InProgress",
+            "PendingChange": "Pending",
+            "PendingOther": "Suspended",
+            "Complete": "Complete"
+        },
+        "Urgency": {
+            "U4": "NoDisruption",
+            "U3": "SlightDisruption",
+            "U2": "SevereDisruption",
+            "U1": "TotalLossOfService"
+        },
+        "Impact": {
+            "I1": "Enterprise",
+            "I2": "SiteOrDepartment",
+            "I3": "MultipleUsers",
+            "I4": "SingleUser"
+        },
+        "CompletionCodeFromCanonical": {
+            "SuccessfulDiagnosis": "SuccessfulDiagnosis",
+            "NoFaultFound": "NoFaultFound",
+            "NoUserResponse": "NoUserResponse",
+            "NotReproducible": "NotReproducible",
+            "OutOfScope": "OutofScope",
+            "RequestRejected": "RequestRejected",
+            "ResolvedByFix": "Resolvedbyfix",
+            "ResolvedWorkaround": "ResolvedWorkaround",
+            "UnableToSolve": "UnabletoSolve",
+            "WithdrawnByUser": "WithdrawnbyUser",
+
+            "SolvedByUserInstruction":"",
+            "AutomaticallyClosed":""
+        },
+        "CompletionCodeToCanonical": {
+             "SuccessfulDiagnosis":"SuccessfulDiagnosis",
+             "NoFaultFound":"NoFaultFound",
+             "NoUserResponse":"NoUserResponse",
+             "NotReproducible":"NotReproducible",
+             "OutofScope":"OutOfScope",
+             "RequestRejected":"RequestRejected",
+             "Resolvedbyfix":"ResolvedByFix",
+             "ResolvedWorkaround":"ResolvedWorkaround",
+             "UnabletoSolve":"UnableToSolve",
+             "WithdrawnbyUser":"WithdrawnByUser"
+        }
+
+    },
+    "Request": {
+        "Status": {
+            // todo: review status mappings
+            "RequestStatusReady": "RequestStatusReady",
+            "RequestStatusInProgress": "RequestStatusInProgress",
+            "RequestStatusPending": "RequestStatusPending",
+            "RequestStatusSuspended": "RequestStatusSuspended",
+            "RequestStatusComplete": "RequestStatusComplete"
+        },
+        "Urgency": {
+            "U4": "NoDisruption",
+            "U3": "SlightDisruption",
+            "U2": "SevereDisruption",
+            "U1": "TotalLossOfService"
+        },
+        "Impact": {
+            "I1": "Enterprise",
+            "I2": "SiteOrDepartment",
+            "I3": "MultipleUsers",
+            "I4": "SingleUser"
+        },
+        "Priority": {
+            "P1": "CriticalPriority",
+            "P2": "HighPriority",
+            "P3": "MediumPriority",
+            "P4": "LowPriority"
+        },
+	"CompletionCodeFromCanonical": {
+            "DEFAULT": "CompletionCodeIncidentResolved",
+            "NoFaultFound": "NoFaultFound",
+            "NoUserResponse": "NoUserResponse",
+            "NotReproducible": "CompletionCodeUnableToReproduce",
+            "OutOfScope": "OutofScope",
+            "RequestRejected": "RequestRejected",
+            "ResolvedByFix": "CompletionCodeIncidentResolved",
+            "ResolvedWorkaround": "CompletionCodeResolvedWithWorkaround",
+            "UnableToSolve": "UnabletoSolve",
+            "WithdrawnByUser": "WithdrawnbyUser",
+
+            "SolvedByUserInstruction":"",
+            "AutomaticallyClosed":""
+
+        },
+        "CompletionCodeToCanonical": {
+             "SuccessfulDiagnosis":"SuccessfulDiagnosis",
+             "NoFaultFound":"NoFaultFound",
+             "NoUserResponse":"NoUserResponse",
+             "NotReproducible":"NotReproducible",
+             "OutofScope":"OutOfScope",
+             "RequestRejected":"RequestRejected",
+             "Resolvedbyfix":"ResolvedByFix",
+             "ResolvedWorkaround":"ResolvedWorkaround",
+             "UnabletoSolve":"UnableToSolve",
+             "WithdrawnbyUser":"WithdrawnByUser"
+        }
+
+    }
+
+}

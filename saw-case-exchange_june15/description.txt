@@ -1,0 +1,9 @@
+****content-saw-case-exchange description file*****
+
+features : case-exchange
+
+case-exchange
+------------------------------------------------------------------------------------------------------------------------
+Content pack contains backend system type specific i.e. HP SAW specific case-exchange configuration and operations
+that support generic configuration in content-case-exchange.
+This includes mainly case exchange event definitions.
